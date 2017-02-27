@@ -18,7 +18,11 @@ public class Poblacion {
     private LinkedList<Individuo> habitantes;
     private int num_habitantes;
 
-
+    public Poblacion (int num_ciudades,int tam_pob){
+       this.num_habitantes = tam_pob;
+       generaPoblacionIncialAleatoria(num_habitantes, num_ciudades);
+    }
+    
     public Poblacion(LinkedList<Individuo> habitantes) {
         this.habitantes = (LinkedList<Individuo>) habitantes.clone();
         this.num_habitantes = this.habitantes.size();
@@ -33,12 +37,12 @@ public class Poblacion {
         }
     }
 
-//    private void generaPoblacionIncialAleatoria(int num_habitantes) {
-//        this.habitantes = new LinkedList<>();
-//        for (int x = 0; x < num_habitantes; x++) {
-//            this.getHabitantes().add(new Individuo());
-//        }
-//    }
+    private void generaPoblacionIncialAleatoria(int num_habitantes,int num_ciudades) {
+        this.habitantes = new LinkedList<>();
+        for (int x = 0; x < num_habitantes; x++) {
+            this.habitantes.add(new Individuo(num_ciudades));
+        }
+    }
 
     /**
      * @return the mejor

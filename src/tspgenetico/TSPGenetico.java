@@ -6,6 +6,7 @@
 package tspgenetico;
 
 import data.Herramientas;
+import data.Poblacion;
 
 /**
  *
@@ -17,9 +18,8 @@ public class TSPGenetico {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        double matriz[][] = Herramientas.generarMatrizDistanciasAleatoria(3, 1000);
-        Herramientas.guardarInstancia(matriz);
-        //double matriz2[][] = Herramientas.abrirInstancia();
+        GeneticoV1 gen = new GeneticoV1(5, 1, 0.4, 4,3,Herramientas.abrirInstancia());
+        gen.evolucionar();
         System.out.println();
     }
     
