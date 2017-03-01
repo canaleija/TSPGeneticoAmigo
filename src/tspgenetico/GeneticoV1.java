@@ -8,6 +8,7 @@ package tspgenetico;
 import data.Herramientas;
 import data.Individuo;
 import data.Poblacion;
+import operadores.Cruza;
 
 /**
  *
@@ -54,9 +55,29 @@ public class GeneticoV1 {
      
     
     public void evolucionar (){
+       // crear un proceso iterativo para simular las epocas
+        for (int e=0; e < this.epocas;e++){
+            // garantizar la creación de una nueva población
+            Poblacion nuevaP = new Poblacion(); 
+            // tenemos que iterar para construir la nueva generacion
+            for(int i=0; i < this.tamano_poblacion;i++){
+               // proceso de seleccion de padre y madre
+               Individuo padre = this.poblacion.obtenerAleatorio();
+               Individuo madre = this.poblacion.obtenerAleatorio();
+               // ejecutamos la cruza y obtenemos al hijo
+               Individuo hijo = Cruza.cruzaAsexual(padre,madre);
+               // dependiendo de una prob. muta se cambia el hijo
+               if (Math.random()<=this.prob_muta){
+               // Herramientas.mutaGenAleatorio(hijo);
+               }
+// agrega el hijo a la nueva poblacion
+               nuevaP.agregarHabitante(hijo);
+            }
+            // actualizamos la población 
+            this.poblacion = new Poblacion(nuevaP);
+            System.out.println(e+" - fitness de: "+this.poblacion.getMejor().getFitness());
         
-      // TODO_ implementar el metodo pero sin cruzar
-    
+        }
     
     }
     

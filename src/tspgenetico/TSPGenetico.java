@@ -6,7 +6,9 @@
 package tspgenetico;
 
 import data.Herramientas;
+import data.Individuo;
 import data.Poblacion;
+import operadores.Cruza;
 
 /**
  *
@@ -18,8 +20,8 @@ public class TSPGenetico {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GeneticoV1 gen = new GeneticoV1(5, 1, 0.4, 4,3,Herramientas.abrirInstancia());
-        gen.evolucionar();
+      
+        Cruza.cruzaAsexual(new Individuo(new int[]{1,0,2,3,4}),new Individuo(new int[]{1,4,2,3,0}));
         System.out.println();
     }
     

@@ -155,7 +155,7 @@ public class Herramientas {
         return ruta;
     }
 
-    private static int generarIndiceValido(int[] ruta) {
+    public static int generarIndiceValido(int[] ruta) {
         Random r = new Random();
         int indice = r.nextInt(ruta.length);
         while(ruta[indice] != -1){

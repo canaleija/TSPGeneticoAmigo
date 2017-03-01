@@ -18,6 +18,13 @@ public class Poblacion {
     private LinkedList<Individuo> habitantes;
     private int num_habitantes;
 
+    public Poblacion(){
+       this.mejor = null;
+       this.habitantes = new LinkedList<>();
+       this.num_habitantes = 0;
+    }
+    
+    // donde lo generamos de forma aleatori
     public Poblacion (int num_ciudades,int tam_pob){
        this.num_habitantes = tam_pob;
        generaPoblacionIncialAleatoria(num_habitantes, num_ciudades);
