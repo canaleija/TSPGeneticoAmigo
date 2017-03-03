@@ -9,6 +9,7 @@ import data.Herramientas;
 import data.Individuo;
 import data.Poblacion;
 import operadores.Cruza;
+import operadores.Muta;
 
 /**
  *
@@ -20,8 +21,11 @@ public class TSPGenetico {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      
-        Cruza.cruzaAsexual(new Individuo(new int[]{1,0,2,3,4}),new Individuo(new int[]{1,4,2,3,0}));
+        Individuo.ciudadInicial=2;
+        double matriz[][] = Herramientas.abrirInstancia();
+        Individuo.matrizDistancias = matriz;
+        GeneticoV1 g1 = new GeneticoV1(15, 100000, 0.4,1000, 56,matriz);
+        g1.evolucionar();
         System.out.println();
     }
     

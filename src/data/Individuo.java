@@ -19,18 +19,21 @@ public class Individuo {
 
     public Individuo(int numCiu) {
         this.genotipo = Herramientas.generarGenotipoAleatorio(numCiu, ciudadInicial);
+        calcularFitness();
     }
 
     public Individuo(Individuo ind) {
         this.genotipo = ind.getGenotipo().clone();
+        calcularFitness();
     }
     
     public Individuo(int[] genotipo) {
         this.genotipo = genotipo.clone();
+        calcularFitness();
     }
 
     public double getFitness() {
-        calcularFitness();
+                
         return fitness;
     }
 
@@ -38,7 +41,7 @@ public class Individuo {
         return genotipo;
     }
         
-    private void calcularFitness(){
+    public void calcularFitness(){
         if(matrizDistancias != null){
             double acumulador = matrizDistancias[this.genotipo[0]][this.genotipo[this.genotipo.length-1]];
             for(int i=0;i<this.genotipo.length-1;i++){
@@ -50,5 +53,16 @@ public class Individuo {
             this.fitness = -1;
         }
     }
+
+    @Override
+    public String toString() {
+        String aux = "[";
+        for (int x=0;x<this.genotipo.length-1;x++)
+            aux+=genotipo[x]+",";
+        
+        aux+=genotipo[genotipo.length-1]+"]";
+        return aux; //To change body of generated methods, choose Tools | Templates.
+    }
+    
         
 }

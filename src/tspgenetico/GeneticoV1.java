@@ -9,6 +9,7 @@ import data.Herramientas;
 import data.Individuo;
 import data.Poblacion;
 import operadores.Cruza;
+import operadores.Muta;
 
 /**
  *
@@ -63,12 +64,13 @@ public class GeneticoV1 {
             for(int i=0; i < this.tamano_poblacion;i++){
                // proceso de seleccion de padre y madre
                Individuo padre = this.poblacion.obtenerAleatorio();
-               Individuo madre = this.poblacion.obtenerAleatorio();
+               Individuo madre = this.poblacion.getMejor();
                // ejecutamos la cruza y obtenemos al hijo
                Individuo hijo = Cruza.cruzaAsexual(padre,madre);
                // dependiendo de una prob. muta se cambia el hijo
                if (Math.random()<=this.prob_muta){
-               // Herramientas.mutaGenAleatorio(hijo);
+               Muta.mutaPosAleatorio(hijo);
+               
                }
 // agrega el hijo a la nueva poblacion
                nuevaP.agregarHabitante(hijo);
@@ -78,6 +80,7 @@ public class GeneticoV1 {
             System.out.println(e+" - fitness de: "+this.poblacion.getMejor().getFitness());
         
         }
+        System.out.println(this.poblacion.getMejor().toString());
     
     }
     

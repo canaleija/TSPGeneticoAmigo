@@ -7,6 +7,7 @@ package operadores;
 
 import data.Herramientas;
 import data.Individuo;
+import java.util.ArrayList;
 
 /**
  *
@@ -35,12 +36,24 @@ public class Cruza {
         }
        Individuo hijo1 =  new Individuo(geno1);
        Individuo hijo2 =  new Individuo(geno2);
-       
-        if (hijo1.getFitness()<hijo2.getFitness()){
-         return hijo1;
-        }else{
-        return hijo2;
+         
+       ArrayList<Individuo> lista = new ArrayList<>();
+       lista.add(madre);
+       lista.add(padre);
+       lista.add(hijo1);
+       lista.add(hijo2);
+       return retornaMejor(lista);
+    }
+
+    private static Individuo retornaMejor(ArrayList<Individuo> lista) {
+        Individuo mejor = lista.get(0);
+        
+        for (int x=1; x<lista.size();x++){
+           if(lista.get(x).getFitness()<mejor.getFitness()){
+            mejor =lista.get(x);
+           }
         }
+        return mejor;
     }
     
 }
